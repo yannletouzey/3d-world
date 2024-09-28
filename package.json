@@ -1,0 +1,20 @@
+{
+  "name": "threejs-world",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "lil-gui": "^0.19.2",
+    "three": "^0.169.0",
+    "vercel": "^37.6.0"
+  }
+}
