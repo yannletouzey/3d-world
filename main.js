@@ -26,7 +26,7 @@ const alphaMap = textureLoader.load('./02_earthspec1k.jpg')
 
 // star
 const star = getStarfield({
-  numStars: 10000,
+  numStars: 5000,
   sprite: starLoader
 })
 scene.add(star)
