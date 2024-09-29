@@ -162,8 +162,6 @@ const starsMaterial = new THREE.PointsMaterial({
 const stars = new THREE.Points(starsGeometry, starsMaterial)
 scene.add(stars)
 
-
-
 // controls
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
@@ -182,6 +180,7 @@ function animate() {
   handleRaycast()
   requestAnimationFrame(animate)
   controls.update()
+  
 }
 animate()
 
