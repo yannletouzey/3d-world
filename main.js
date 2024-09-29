@@ -24,18 +24,11 @@ const globeUv = new THREE.Vector2()
 
 // Texture
 const textureLoader = new THREE.TextureLoader()
-const starLoader = textureLoader.load('./circle.png')
+const starTexture = textureLoader.load('./circle.png')
 const colorMap = textureLoader.load('./00_earthmap1k.jpg')
 const elevMap = textureLoader.load('./01_earthbump1k.jpg')
 const alphaMap = textureLoader.load('./02_earthspec1k.jpg')
 const rainbowColorMap = textureLoader.load('./04_rainbow1k.jpg')
-
-// star
-const star = getStarfield({
-  numStars: 5000,
-  sprite: starLoader
-})
-scene.add(star)
 
 // Shader
 const vertexShader = `
@@ -146,6 +139,29 @@ globeGroup.add(globePoint)
 // light
 const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x080820, 10)
 scene.add(hemisphereLight)
+
+// stars
+const count = 5000
+const positions = new Float32Array(count * 3)
+for (let i = 0; i < count * 3; i++) {
+  positions[i] = (Math.random() - 0.5) * 500
+}
+
+const starsGeometry = new THREE.BufferGeometry()
+starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+
+const starsMaterial = new THREE.PointsMaterial({
+  color: 0xffffff,
+  map: starTexture,
+  transparent: true,
+  size: 0.6,
+  sizeAttenuation: true,
+  depthWrite: false
+})
+
+const stars = new THREE.Points(starsGeometry, starsMaterial)
+scene.add(stars)
+
 
 
 // controls
